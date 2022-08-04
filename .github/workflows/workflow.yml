@@ -1,47 +1,27 @@
-name: CI/CD
+name : "Github pages deploy"
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+        - "master"
 
 jobs:
-  build:
-
+  build: 
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        node-version: [15.x]
+     matrix:
+      node-version: [16.x]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+        - name: Checkout
+          uses: actions/checkout@v1
 
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+        - name: Install & Build
+          run: npm install & npm run build
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run the tests and generate coverage report
-      run: npm test -- --coverage
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-
-    - name: Build
-      run: npm run build
-
-    - name: Deploy
-      run: |
-        git config --global user.name $user_name
-        git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
-        npm run deploy
-      env:
-        user_name: 'JarvAmrit'
-        user_email: 'amritkr1994@gmail.com'
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@4.1.1
+          with:
+           branch: gh-pages
+           folder: build
