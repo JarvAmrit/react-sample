@@ -1,27 +1,28 @@
-name : "Github pages deploy"
+name: Node.js CI Test
 
 on:
   push:
-    branches:
-        - "master"
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build: 
+  build:
+
     runs-on: ubuntu-latest
 
     strategy:
-    matrix:
-      node-version: [1.x]
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-        - name: Checkout
-          uses: actions/checkout@v1
-
-        - name: Install & Build
-          run: npm install & npm run build
-
-        - name: Deploy
-          uses: JamesIves/github-pages-deploy-action@4.1.1
-          with:
-            branch: gh-pages
-            folder: build
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm install
+    - run: npm run build
+    - run: gh-pages -d build
