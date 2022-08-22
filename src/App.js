@@ -4,31 +4,78 @@ import "./sb-admin-2.min.css";
 import PieChart from "./components/PieChart";
 import LineChart from "./components/LineChart";
 import BarChart from "./components/BarChart";
-import React from "react";
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import GMaps from "./components/GMaps";
+import React, {useMemo} from "react";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
+import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 
-function App() {  
+// import googleMapsEV from "./components/googleMapsEV";
 
+function App() {
   const printRef = React.useRef();
   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
-    const data = canvas.toDataURL('image/png');
+    const data = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF();
     const imgProperties = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight =
-      (imgProperties.height * pdfWidth) / imgProperties.width;
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('print.pdf');
+    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("print.pdf");
   };
 
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: "AIzaSyDJsOOXRqIErbvkZdgqZRg5gKV1HFZQb8A",
+  // });
+
+  // if (!isLoaded) return <div>Loading...</div>;
+  // return <Map/>;
 
 
-  return (
+
+
+  // function Map()
+  // {
+  //   //const center = useMemo(()=>({lat:44, lng:-80}),[]);
+  
+  //   const center = {
+  //     lat: 0,
+  //     lng: -180
+  //   }
+    
+  //   const position = {
+  //     lat: 37.772,
+  //     lng: -122.214
+  //   } 
+    
+  //   const onLoad = marker => {
+  //     console.log('marker: ', marker)
+  //   }
+    
+  //   const mapContainerStyle = {
+  //     height: "400px",
+  //     width: "800px"
+  //   }
+
+  //   return   <GoogleMap
+  //   id="marker-example"
+  //   mapContainerStyle={mapContainerStyle}
+  //   zoom={2}
+  //   center={center}
+  // >
+  //   <MarkerF
+  //     onLoad={onLoad}
+  //     position={position}
+  //   />
+  // </GoogleMap>
+  // }
+
+   return (
+  
     <div ref={printRef}>
       <div>
         <nav className="navbar navbar-expand-lg bg-light">
@@ -308,9 +355,36 @@ function App() {
             </div>
             </div>
             </div>
+           
 
+            <div className="container pl-2">
+          <div className="row">
+            <div className="col-xl-12 col-lg-7">
+              <div className="card shadow mb-4">
+                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 className="m-0 font-weight-bold text-primary">
+                    Participation
+                  </h6>
+                </div>
 
-    </div>
+                <div className="card-body">
+                  <div>
+                  <GMaps/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+
+            
+            
+              
+          
+             
+    </div> 
+ 
+
   );
 }
 
