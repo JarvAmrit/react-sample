@@ -51,7 +51,7 @@ export default function GMaps()
       
       const mapContainerStyle = {
         height: "400px",
-        width: "1200px"
+        width: "1050px"
       }
   
       return   <GoogleMap

@@ -5,6 +5,7 @@ import PieChart from "./components/PieChart";
 import LineChart from "./components/LineChart";
 import BarChart from "./components/BarChart";
 import GMaps from "./components/GMaps";
+import Login from "./components/Login";
 import React, {useMemo} from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
@@ -262,7 +263,7 @@ function App() {
           </div>
       </div>
 
-      <div className="container ml-5">
+      <div className="container ">
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Charge Management Information</h1>
           <a
@@ -391,6 +392,27 @@ function App() {
                 <div className="card-body">
                   <div>
                   <OpenStreetMaps/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div className="container pl-2">
+          <div className="row">
+            <div className="col-xl-12 col-lg-7">
+              <div className="card shadow mb-4">
+                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 className="m-0 font-weight-bold text-primary">
+                 Login Template
+                  </h6>
+                </div>
+
+                <div className="card-body">
+                  <div>
+                  <Login/>
                   </div>
                 </div>
               </div>
