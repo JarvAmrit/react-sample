@@ -9,7 +9,7 @@ import React, {useMemo} from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
-
+import OpenStreetMaps from "./components/OpenStreetMaps";
 // import googleMapsEV from "./components/googleMapsEV";
 
 function App() {
@@ -370,6 +370,27 @@ function App() {
                 <div className="card-body">
                   <div>
                   <GMaps/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div className="container pl-2">
+          <div className="row">
+            <div className="col-xl-12 col-lg-7">
+              <div className="card shadow mb-4">
+                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 className="m-0 font-weight-bold text-primary">
+                    OSM Integration
+                  </h6>
+                </div>
+
+                <div className="card-body">
+                  <div>
+                  <OpenStreetMaps/>
                   </div>
                 </div>
               </div>
