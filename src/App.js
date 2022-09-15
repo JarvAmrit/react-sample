@@ -11,7 +11,7 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import OpenStreetMaps from "./components/OpenStreetMaps";
-// import googleMapsEV from "./components/googleMapsEV";
+
 
 function App() {
   const printRef = React.useRef();
@@ -29,51 +29,7 @@ function App() {
     pdf.save("print.pdf");
   };
 
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: "AIzaSyDJsOOXRqIErbvkZdgqZRg5gKV1HFZQb8A",
-  // });
-
-  // if (!isLoaded) return <div>Loading...</div>;
-  // return <Map/>;
-
-
-
-
-  // function Map()
-  // {
-  //   //const center = useMemo(()=>({lat:44, lng:-80}),[]);
-  
-  //   const center = {
-  //     lat: 0,
-  //     lng: -180
-  //   }
-    
-  //   const position = {
-  //     lat: 37.772,
-  //     lng: -122.214
-  //   } 
-    
-  //   const onLoad = marker => {
-  //     console.log('marker: ', marker)
-  //   }
-    
-  //   const mapContainerStyle = {
-  //     height: "400px",
-  //     width: "800px"
-  //   }
-
-  //   return   <GoogleMap
-  //   id="marker-example"
-  //   mapContainerStyle={mapContainerStyle}
-  //   zoom={2}
-  //   center={center}
-  // >
-  //   <MarkerF
-  //     onLoad={onLoad}
-  //     position={position}
-  //   />
-  // </GoogleMap>
-  // }
+ 
 
    return (
   
